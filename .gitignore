@@ -20,7 +20,7 @@ obj/
 *.sln.docstates
 *.DotSettings.user
 .idea/
-.vscode/
+# .vscode/
 *.swp
 
 ## Configuração do Visual Studio Code
