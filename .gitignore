@@ -1,0 +1,63 @@
+
+# .gitignore 
+# todo-list 
+#
+# Created by Tiago Amaral on 05/09/2025. 
+# Copyright ©2024 Tiago Amaral. All rights reserved.
+
+
+## Compilação
+bin/
+obj/
+[Bb]uild/
+[Ll]ogs/
+[Bb]enchmarkDotNet.Artifacts/
+
+## Arquivos de usuário / IDE
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+.idea/
+.vscode/
+*.swp
+
+## Configuração do Visual Studio Code
+.history/
+*.code-workspace
+
+## Testes e relatórios
+TestResults/
+.trx
+coverage/
+*.coverage
+*.coveragexml
+.nCrunchTemp/
+nunit-*.xml
+
+## Pacotes e dependências
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Se usar Paket
+.paket/
+paket-files/
+
+## Configuração de sistema operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+## Logs
+*.log
+
+## Docker / Container
+docker-compose.override.yml
+.docker/
