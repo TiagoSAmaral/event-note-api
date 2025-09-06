@@ -6,7 +6,11 @@
 * Copyright ©2024 Tiago Amaral. All rights reserved.
 */
 
-class EventModel
+namespace Module.Eventlist.Storage.Entity;
+public class EventModel
 {
-    public int identifier { get; set;}
+    public int id { get; set; }
+    public string title { get; set; }
+    public DateTime data { get; set; }
+    public string locale { get; set; }
 }
