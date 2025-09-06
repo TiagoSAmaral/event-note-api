@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C#: todo-list Debug",
+            "name": "C#: event-list Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/todo-list.csproj"
+            "projectPath": "${workspaceFolder}/event-list.csproj"
         }
 
     ]
