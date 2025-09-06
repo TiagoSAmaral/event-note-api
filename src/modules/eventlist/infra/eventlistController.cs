@@ -16,7 +16,7 @@ using Module.EventList.Service.Interface;
 
 namespace Module.Eventlist.Infra.Controller;
 
-[Route("api/[controller]")]
+[Route("api/eventos")]
 [ApiController]
 public class EventListController : ControllerBase
 {
@@ -28,15 +28,43 @@ public class EventListController : ControllerBase
         this.eventListServices = eventListServices;
     }
 
-    [HttpGet("FetchListEvents")]
+    // GET [HOST]/api/eventos
+
+    /// <summary>
+    /// Lista todos os Eventos
+    /// </summary>
+    /// <description>Retorna uma lista de eventos.</description>
+    [HttpGet]
     public IActionResult GetAll() => Ok(this.eventListServices.GetAllAsync());
 
-    [HttpGet("FetchEventById")]
+    // GET [HOST]/api/eventos/{id}
+
+    /// <summary>
+    /// Consulta somente um evento usando sua identificação.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <parameters>id - Identificador do evento.</parameters>
+    /// <returns>Retorna um evento</returns>
+    [HttpGet("id")]
     public IActionResult GetById(Guid id) => Ok(this.eventListServices.GetByIdAsync(id));
 
-    [HttpPost("CreateNewEvent")]
+    // POST [HOST]/api/eventos
+
+    /// <summary>
+    /// Cria novo evento
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns>Permite registrar um novo evento</returns>
+    [HttpPost]
     public IActionResult Create(EventModel data) => Ok(this.eventListServices.CreateAsync(data));
 
-    [HttpDelete("DeleteEventBytId")]
+    // GET [HOST]/api/eventos/{id}
+
+    /// <summary>
+    /// Apaga evento
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Permite remover um evento usando usa idenrtificação</returns>
+    [HttpDelete]
     public IActionResult DeleteById(Guid id) => Ok(this.eventListServices.DeleteAsync(id));
 }
