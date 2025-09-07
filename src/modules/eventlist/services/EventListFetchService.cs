@@ -7,27 +7,27 @@
 */
 
 
-using Module.Eventlist.Storage.Entity;
-using Module.Eventlist.Storage.Interface;
 
-namespace Module.Eventlist.Service;
+using event_list.modules.eventlist.storage;
+
+namespace event_list.modules.eventlist.services;
 
 public interface IEventListFetchService
 {
-    IEnumerable<EventModel> Fetch();
+    Task<IEnumerable<EventFormDto>> Fetch();
 }
 
 public class EventListFetchService: IEventListFetchService
 {
-    private readonly IEventListStorage storage;
+    private readonly IEventListStorage _storage;
 
     public EventListFetchService(IEventListStorage storage)
     {
-        this.storage = storage;
+        this._storage = storage;
     }
 
-    public IEnumerable<EventModel> Fetch()
+    public async Task<IEnumerable<EventFormDto>> Fetch()
     {
-        return storage.GetAllAsync().Result;
+        return await _storage.GetAllAsync();
     }
 }
