@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using event_list.modules.eventlist.services;
 using event_list.modules.eventlist.storage;
 using event_list.shared.exceptionsMessage;
-using event_list.shared.responsedefault;
+using event_list.shared.response_default;
 
 namespace event_list.modules.eventlist.infra;
 
@@ -34,9 +34,7 @@ public class EventListController : ControllerBase
     /// </summary>
     /// <description>Retorna uma lista de eventos.</description>
     [HttpGet]
-    public async Task<IActionResult> GetAllAsync() => Ok(await this._eventListServices.GetAllAsync());
-
-    // GET [HOST]/api/eventos/{id}
+    public IActionResult GetAllAsync() => Ok(new ResponseDefault(200, string.Empty, this._eventListServices.GetAll()));
 
     /// <summary>
     /// Consulta somente um evento usando sua identificação.
@@ -45,9 +43,7 @@ public class EventListController : ControllerBase
     /// <parameters>id - Identificador do evento.</parameters>
     /// <returns>Retorna um evento</returns>
     [HttpGet("id")]
-    public async Task<IActionResult> GetById(Guid id) => Ok(await this._eventListServices.GetByIdAsync(id));
-
-    // POST [HOST]/api/eventos
+    public async Task<IActionResult> GetById(Guid id) => Ok(new ResponseDefault(200, string.Empty, await this._eventListServices.GetByIdAsync(id)));
 
     /// <summary>
     /// Cria novo evento
@@ -62,8 +58,8 @@ public class EventListController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        this._eventListServices.CreateAsync(dto);
-        return Ok(new ResponseDefault( true, ExceptionsMessages.SuccessCreateEvent, null));
+        await this._eventListServices.CreateAsync(dto);
+        return Ok(new ResponseDefault( 200, ExceptionsMessages.SuccessCreateEvent, null));
     }
 
     // GET [HOST]/api/eventos/{id}
@@ -77,6 +73,6 @@ public class EventListController : ControllerBase
     public async Task<IActionResult> DeleteById(Guid id)
     {
         await this._eventListServices.DeleteAsync(id);
-         return Ok(new ResponseDefault( true, ExceptionsMessages.SuccessDeleteEvent, null));
+         return Ok(new ResponseDefault( 200, ExceptionsMessages.SuccessDeleteEvent, null));
     }
 }
