@@ -35,7 +35,7 @@ public class EventListServices : IEventListServices
 
     public async Task DeleteAsync(Guid id) => await this.deleteService.Delete(id);
 
-    public async Task<IEnumerable<EventFormDto>> GetAllAsync() => await this.fetchService.Fetch();
+    public IEnumerable<EventFormDto> GetAll() => this.fetchService.Fetch();
 
     public async Task<EventFormDto?> GetByIdAsync(Guid id) => await this.fetchByIdService.Fetch(id);
 }
