@@ -6,26 +6,25 @@
 * Copyright ©2024 Tiago Amaral. All rights reserved.
 */
 
-using System.Runtime.CompilerServices;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Module.Eventlist.Storage.Entity;
-using Module.EventList.Service;
-using Module.EventList.Service.Interface;
+using event_list.modules.eventlist.services;
+using event_list.modules.eventlist.storage;
+using event_list.shared.exceptionsMessage;
+using event_list.shared.responsedefault;
 
-namespace Module.Eventlist.Infra.Controller;
+namespace event_list.modules.eventlist.infra;
 
-[Route("api/eventos")]
 [ApiController]
+[Route("api/eventos")]
+
 public class EventListController : ControllerBase
 {
 
-    private readonly IEventListServices eventListServices;
+    private readonly IEventListServices _eventListServices;
 
     public EventListController(IEventListServices eventListServices)
     {
-        this.eventListServices = eventListServices;
+        this._eventListServices = eventListServices;
     }
 
     // GET [HOST]/api/eventos
@@ -35,7 +34,7 @@ public class EventListController : ControllerBase
     /// </summary>
     /// <description>Retorna uma lista de eventos.</description>
     [HttpGet]
-    public IActionResult GetAll() => Ok(this.eventListServices.GetAllAsync());
+    public async Task<IActionResult> GetAllAsync() => Ok(await this._eventListServices.GetAllAsync());
 
     // GET [HOST]/api/eventos/{id}
 
@@ -46,7 +45,7 @@ public class EventListController : ControllerBase
     /// <parameters>id - Identificador do evento.</parameters>
     /// <returns>Retorna um evento</returns>
     [HttpGet("id")]
-    public IActionResult GetById(Guid id) => Ok(this.eventListServices.GetByIdAsync(id));
+    public async Task<IActionResult> GetById(Guid id) => Ok(await this._eventListServices.GetByIdAsync(id));
 
     // POST [HOST]/api/eventos
 
@@ -56,7 +55,16 @@ public class EventListController : ControllerBase
     /// <param name="data"></param>
     /// <returns>Permite registrar um novo evento</returns>
     [HttpPost]
-    public IActionResult Create(EventModel data) => Ok(this.eventListServices.CreateAsync(data));
+    public async Task<IActionResult> Create([FromBody] EventFormDto dto) {
+
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        this._eventListServices.CreateAsync(dto);
+        return Ok(new ResponseDefault( true, ExceptionsMessages.SuccessCreateEvent, null));
+    }
 
     // GET [HOST]/api/eventos/{id}
 
@@ -66,5 +74,9 @@ public class EventListController : ControllerBase
     /// <param name="id"></param>
     /// <returns>Permite remover um evento usando usa idenrtificação</returns>
     [HttpDelete]
-    public IActionResult DeleteById(Guid id) => Ok(this.eventListServices.DeleteAsync(id));
+    public async Task<IActionResult> DeleteById(Guid id)
+    {
+        await this._eventListServices.DeleteAsync(id);
+         return Ok(new ResponseDefault( true, ExceptionsMessages.SuccessDeleteEvent, null));
+    }
 }
