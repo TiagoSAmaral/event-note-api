@@ -10,7 +10,7 @@ namespace event_list.modules.eventlist.storage;
 
 public interface IEventListStorage
 {
-    Task<IEnumerable<EventFormDto>> GetAllAsync();
+    IEnumerable<EventFormDto> GetAllAsync();
     Task<EventFormDto?> GetByIdAsync(Guid id);
     Task CreateAsync(EventFormDto entity);
     Task DeleteAsync(Guid id);
