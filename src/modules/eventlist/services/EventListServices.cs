@@ -6,10 +6,8 @@
 * Copyright ©2024 Tiago Amaral. All rights reserved.
 */
 
-using Module.EventList.Service.Interface;
-using Module.Eventlist.Storage.Entity;
-namespace Module.Eventlist.Service;
-
+using event_list.modules.eventlist.storage;
+namespace event_list.modules.eventlist.services;
 public class EventListServices : IEventListServices
 {
 
@@ -30,23 +28,14 @@ public class EventListServices : IEventListServices
     }
 
 
-    public Task CreateAsync(EventModel entity)
+    public async Task CreateAsync(EventFormDto dto)
     {
-        throw new NotImplementedException();
+        await this.saveService.Add(dto);
     }
 
-    public Task DeleteAsync(Guid id)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task DeleteAsync(Guid id) => await this.deleteService.Delete(id);
 
-    public Task<IEnumerable<EventModel>> GetAllAsync()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<IEnumerable<EventFormDto>> GetAllAsync() => await this.fetchService.Fetch();
 
-    public Task<EventModel?> GetByIdAsync(Guid id)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<EventFormDto?> GetByIdAsync(Guid id) => await this.fetchByIdService.Fetch(id);
 }
