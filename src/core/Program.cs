@@ -7,10 +7,11 @@
 */
 
 using System.Reflection;
-using Module.Eventlist.Infra.Controller;
-using Module.Eventlist.Service;
-using Module.Eventlist.Storage.Interface;
-using Module.EventList.Service.Interface;
+using Microsoft.EntityFrameworkCore;
+
+using event_list.modules.eventlist.infra;
+using event_list.modules.eventlist.storage;
+using event_list.modules.eventlist.services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,8 +26,11 @@ builder.Services.AddSwaggerGen( c => {
 });
 
 // Custom Module
-builder.Services.AddScoped<IEventListStorage, EventListStorage>();
+builder.Services.AddDbContext<ToDoListDbContext>(options =>
+    options.UseInMemoryDatabase("EventListDb"));
 
+builder.Services.AddScoped<ToDoListDbContext>();
+builder.Services.AddScoped<IEventListStorage, EventListStorage>();
 builder.Services.AddScoped<IEventListDeleteByIdentifierService, EventListDeleteByIdentifierService>();
 builder.Services.AddScoped<IEventListFetchByIdentifierService, EventListFetchByIdentifierService>();
 builder.Services.AddScoped<IEventListFetchService, EventListFetchService>();
@@ -42,6 +46,6 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.MapControllers();
 app.UseHttpsRedirection();
 app.Run();
