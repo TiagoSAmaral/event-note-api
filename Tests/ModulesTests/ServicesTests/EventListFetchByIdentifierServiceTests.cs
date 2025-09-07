@@ -1,12 +1,13 @@
 using event_list.modules.eventlist.services;
 using event_list.modules.eventlist.storage;
 using event_list.shared.exceptionsMessage;
-
-namespace event_list.Tests.ModulesTests.ServicesTests;
-
 using Xunit;
 using Moq;
 using FluentAssertions;
+
+namespace event_list.Tests.ModulesTests.ServicesTests;
+
+
 
 public class EventListFetchByIdentifierServiceTests
 {
