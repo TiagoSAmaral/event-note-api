@@ -1,5 +1,5 @@
 /*
-* ToDoListDbContext.cs 
+* EventListDbContext.cs 
 * event-list 
 *
 * Created by Tiago Amaral on 06/09/2025. 
@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace event_list.modules.eventlist.storage;
 
-public class ToDoListDbContext : DbContext
+public class EventListDbContext : DbContext
 {
     public DbSet<EventFormDto> Events => Set<EventFormDto>();
     
-    public ToDoListDbContext(DbContextOptions<ToDoListDbContext> options) : base(options) {}
+    public EventListDbContext(DbContextOptions<EventListDbContext> options) : base(options) {}
     
     protected override void OnModelCreating(ModelBuilder builder)
     {

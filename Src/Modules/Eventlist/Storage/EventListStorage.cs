@@ -9,9 +9,9 @@
 namespace event_list.modules.eventlist.storage;
 public class EventListStorage : IEventListStorage
 {
-    private readonly ToDoListDbContext _context;
+    private readonly EventListDbContext _context;
 
-    public EventListStorage(ToDoListDbContext context)
+    public EventListStorage(EventListDbContext context)
     {
         _context = context;
     }

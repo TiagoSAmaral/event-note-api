@@ -27,10 +27,10 @@ builder.Services.AddSwaggerGen( c => {
 });
 
 // Custom Module
-builder.Services.AddDbContext<ToDoListDbContext>(options =>
+builder.Services.AddDbContext<EventListDbContext>(options =>
     options.UseInMemoryDatabase("EventListDb"));
 
-builder.Services.AddScoped<ToDoListDbContext>();
+builder.Services.AddScoped<EventListDbContext>();
 builder.Services.AddScoped<IEventListStorage, EventListStorage>();
 builder.Services.AddScoped<IEventListDeleteByIdentifierService, EventListDeleteByIdentifierService>();
 builder.Services.AddScoped<IEventListFetchByIdentifierService, EventListFetchByIdentifierService>();
