@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Tests\ModulesTests\ServicesTests\" />
     <Folder Include="Tests\ModulesTests\StorageTests\" />
     <Folder Include="Tests\SharedTests\" />
   </ItemGroup>
