@@ -14,7 +14,7 @@ namespace event_list.modules.eventlist.services;
 
 public interface IEventListFetchService
 {
-    Task<IEnumerable<EventFormDto>> Fetch();
+    IEnumerable<EventFormDto> Fetch();
 }
 
 public class EventListFetchService: IEventListFetchService
@@ -26,8 +26,8 @@ public class EventListFetchService: IEventListFetchService
         this._storage = storage;
     }
 
-    public async Task<IEnumerable<EventFormDto>> Fetch()
+    public IEnumerable<EventFormDto> Fetch()
     {
-        return await _storage.GetAllAsync();
+        return _storage.GetAllAsync();
     }
 }
