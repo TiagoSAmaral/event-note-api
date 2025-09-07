@@ -31,7 +31,7 @@ public class EventListStorage : IEventListStorage
         }
     }
 
-    public async Task<IEnumerable<EventFormDto>> GetAllAsync() => _context.Events.ToList();
+    public IEnumerable<EventFormDto> GetAllAsync() => _context.Events.ToList();
 
     public async Task<EventFormDto?> GetByIdAsync(Guid id) => await _context.Events.FindAsync(id);
 }
