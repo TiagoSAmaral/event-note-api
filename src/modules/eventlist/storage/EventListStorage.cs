@@ -6,28 +6,32 @@
 * Copyright ©2024 Tiago Amaral. All rights reserved.
 */
 
-using Module.Eventlist.Storage.Entity;
-using Module.Eventlist.Storage.Interface;
-
+namespace event_list.modules.eventlist.storage;
 public class EventListStorage : IEventListStorage
 {
-    public Task CreateAsync(EventModel entity)
+    private readonly ToDoListDbContext _context;
+
+    public EventListStorage(ToDoListDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
+    }
+    public async Task CreateAsync(EventFormDto entity)
+    {
+        await _context.Events.AddAsync(entity);
+        await _context.SaveChangesAsync();
     }
 
-    public Task DeleteAsync(Guid id)
+    public async Task DeleteAsync(Guid id)
     {
-        throw new NotImplementedException();
+        
+        var eventItem = await _context.Events.FindAsync(id);
+        if (eventItem != null) {
+            _context.Events.Remove(eventItem);
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public Task<IEnumerable<EventModel>> GetAllAsync()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<IEnumerable<EventFormDto>> GetAllAsync() => _context.Events.ToList();
 
-    public Task<EventModel?> GetByIdAsync(Guid id)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<EventFormDto?> GetByIdAsync(Guid id) => await _context.Events.FindAsync(id);
 }
