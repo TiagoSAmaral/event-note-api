@@ -6,13 +6,12 @@
 * Copyright ©2024 Tiago Amaral. All rights reserved.
 */
 
-using Module.Eventlist.Storage.Entity;
-namespace Module.Eventlist.Storage.Interface;
+namespace event_list.modules.eventlist.storage;
 
 public interface IEventListStorage
 {
-    Task<IEnumerable<EventModel>> GetAllAsync();
-    Task<EventModel?> GetByIdAsync(Guid id);
-    Task CreateAsync(EventModel entity);
+    Task<IEnumerable<EventFormDto>> GetAllAsync();
+    Task<EventFormDto?> GetByIdAsync(Guid id);
+    Task CreateAsync(EventFormDto entity);
     Task DeleteAsync(Guid id);
 }
