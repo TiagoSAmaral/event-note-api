@@ -6,26 +6,33 @@
 * Copyright ©2024 Tiago Amaral. All rights reserved.
 */
 
-using Module.Eventlist.Storage.Entity;
-using Module.Eventlist.Storage.Interface;
+using System.ComponentModel.DataAnnotations;
+using event_list.modules.eventlist.storage;
 
-namespace Module.Eventlist.Service;
+namespace event_list.modules.eventlist.services;
 
 public interface IEventListSaveService
 {
-    void Add(EventModel data);
+     Task Add(EventFormDto dto);
 }
-public class EventListSaveService: IEventListSaveService
+public class EventListSaveService : IEventListSaveService
 {
-    private readonly IEventListStorage storage;
+    private readonly IEventListStorage _storage;
 
     public EventListSaveService(IEventListStorage storage)
     {
-        this.storage = storage;
+        _storage = storage;
     }
 
-    public void Add(EventModel data)
-    {
-        storage.CreateAsync(data);
+    public async Task Add(EventFormDto dto) {
+
+        var results = new List<ValidationResult>();
+        var context = new ValidationContext(dto);
+        if (!Validator.TryValidateObject(dto, context, results, true))
+        {
+            throw new ValidationException(results.First().ErrorMessage);
+        }
+        dto.Id = Guid.NewGuid();
+        await _storage.CreateAsync(dto);
     }
 }
