@@ -11,31 +11,31 @@ namespace event_list.modules.eventlist.services;
 public class EventListServices : IEventListServices
 {
 
-    private readonly IEventListDeleteByIdentifierService deleteService;
-    private readonly IEventListFetchByIdentifierService fetchByIdService;
-    private readonly IEventListFetchService fetchService;
-    private readonly IEventListSaveService saveService;
+    private readonly IEventListDeleteByIdentifierService _deleteService;
+    private readonly IEventListFetchByIdentifierService _fetchByIdService;
+    private readonly IEventListFetchService _fetchService;
+    private readonly IEventListSaveService _saveService;
 
     public EventListServices(IEventListDeleteByIdentifierService deleteService,
                              IEventListFetchByIdentifierService fetchByIdService,
                              IEventListFetchService fetchService,
                              IEventListSaveService saveService)
     {
-        this.deleteService = deleteService;
-        this.fetchByIdService = fetchByIdService;
-        this.fetchService = fetchService;
-        this.saveService = saveService;
+        this._deleteService = deleteService;
+        this._fetchByIdService = fetchByIdService;
+        this._fetchService = fetchService;
+        this._saveService = saveService;
     }
 
 
     public async Task CreateAsync(EventFormDto dto)
     {
-        await this.saveService.Add(dto);
+        await this._saveService.Add(dto);
     }
 
-    public async Task DeleteAsync(Guid id) => await this.deleteService.Delete(id);
+    public async Task DeleteAsync(Guid id) => await this._deleteService.Delete(id);
 
-    public IEnumerable<EventFormDto> GetAll() => this.fetchService.Fetch();
+    public IEnumerable<EventFormDto> GetAll() => this._fetchService.Fetch();
 
-    public async Task<EventFormDto?> GetByIdAsync(Guid id) => await this.fetchByIdService.Fetch(id);
+    public async Task<EventFormDto?> GetByIdAsync(Guid id) => await this._fetchByIdService.Fetch(id);
 }
