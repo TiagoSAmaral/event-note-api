@@ -6,27 +6,23 @@
 * Copyright ©2024 Tiago Amaral. All rights reserved.
 */
 
-using Module.Eventlist.Storage.Entity;
-using Module.Eventlist.Storage.Interface;
+using event_list.modules.eventlist.storage;
 
-namespace Module.Eventlist.Service;
+namespace event_list.modules.eventlist.services;
 
 public interface IEventListFetchByIdentifierService
 {
-    EventModel? Fetch(Guid id);
+    Task<EventFormDto?> Fetch(Guid id);
 }
 
 public class EventListFetchByIdentifierService: IEventListFetchByIdentifierService
 {
-    private readonly IEventListStorage storage;
+    private readonly IEventListStorage _storage;
 
     public EventListFetchByIdentifierService(IEventListStorage storage)
     {
-        this.storage = storage;
+        this._storage = storage;
     }
 
-    public EventModel? Fetch(Guid id)
-    {
-        return storage.GetByIdAsync(id).Result;
-    }
+    public async Task<EventFormDto?> Fetch(Guid id) => await _storage.GetByIdAsync(id);
 }
