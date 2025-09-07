@@ -7,6 +7,7 @@
 */
 
 using event_list.modules.eventlist.storage;
+using event_list.shared.exceptionsMessage;
 
 namespace event_list.modules.eventlist.services;
 
@@ -24,5 +25,13 @@ public class EventListFetchByIdentifierService: IEventListFetchByIdentifierServi
         this._storage = storage;
     }
 
-    public async Task<EventFormDto?> Fetch(Guid id) => await _storage.GetByIdAsync(id);
+    public async Task<EventFormDto?> Fetch(Guid id)
+    {
+        var eventF = await _storage.GetByIdAsync(id);
+
+        if (eventF == null)
+            throw new KeyNotFoundException(ExceptionsMessages.EventNotFounded);
+
+        return eventF;
+    }
 }
