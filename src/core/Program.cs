@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using event_list.modules.eventlist.infra;
 using event_list.modules.eventlist.storage;
 using event_list.modules.eventlist.services;
+using event_list.shared.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,7 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 app.UseHttpsRedirection();
 app.Run();
