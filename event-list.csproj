@@ -20,10 +20,4 @@
     <ItemGroup>
         <Compile Remove="Tests/**/*.cs" />
     </ItemGroup>
-    
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Tests\Test\Test\obj\project.assets.json" />
-      <_ContentIncludedByDefault Remove="Tests\Test\Test\obj\project.packagespec.json" />
-      <_ContentIncludedByDefault Remove="Tests\Test\Test\obj\Test.csproj.nuget.dgspec.json" />
-    </ItemGroup>
 </Project>

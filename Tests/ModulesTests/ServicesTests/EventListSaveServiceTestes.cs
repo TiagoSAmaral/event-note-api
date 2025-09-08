@@ -1,17 +1,17 @@
 
-using System;
-using System.Linq; 
-using System.Collections.Generic;       
-using System.Threading.Tasks;  
+using System.ComponentModel.DataAnnotations;
 using event_list.modules.eventlist.services;
 using event_list.modules.eventlist.storage;
 using event_list.shared.exceptionsMessage;
+using event_list.tests.Tests.Mocks;
+
+
 using Xunit;
 using Moq;
 using FluentAssertions;
 using Xunit.Abstractions;
 
-namespace event_list.Tests.ModulesTests.ServicesTests;
+namespace event_list.tests.Tests.ModulesTests.ServicesTests;
 
 public class EventListSaveServiceTestes
 {
@@ -57,4 +57,18 @@ public class EventListSaveServiceTestes
         result.Should().NotBeNull();
         result.Id.Should().Be(expectedEvent.Id);
     }
+    
+    [Fact]
+    public async Task SaveEvent_ShouldFailure_WhenIdIsInvalid()
+    {
+        // Arrange
+        var expectedEvent = new MockManager().GetEvents()!.First();
+        expectedEvent.Date = DateTime.Now;
+        
+        // Act
+        Func<Task> action = async () => await _service.Add(expectedEvent);
+        // Assert
+        await action.Should().ThrowAsync<ValidationException>().WithMessage(ExceptionsMessages.InvalidFutureDateMessage);
+    }
 }
+

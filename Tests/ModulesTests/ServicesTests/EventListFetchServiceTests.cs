@@ -1,16 +1,13 @@
 
-using System;
-using System.Linq; 
-using System.Collections.Generic;       
-using System.Threading.Tasks;  
+
 using event_list.modules.eventlist.services;
 using event_list.modules.eventlist.storage;
-using event_list.shared.exceptionsMessage;
+using event_list.tests.Tests.Mocks;
 using Xunit;
 using Moq;
 using FluentAssertions;
 
-namespace event_list.Tests.ModulesTests.ServicesTests;
+namespace event_list.tests.Tests.ModulesTests.ServicesTests;
 
 public class EventListFetchServiceTests
 {
@@ -24,10 +21,10 @@ public class EventListFetchServiceTests
     }
 
     [Fact]
-    public async Task FetchEvents_WhenFounded()
+    public void FetchEvents_WhenFounded()
     {
         // Arrange
-        var expectedEvents = new MockManager().GetEvents();
+        var expectedEvents = new MockManager().GetEvents()!;
 
         _mockStorage
             .Setup(request => request.GetAllAsync())

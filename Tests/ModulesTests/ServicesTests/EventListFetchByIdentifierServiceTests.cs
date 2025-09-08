@@ -1,7 +1,3 @@
-using System;
-using System.Linq; 
-using System.Collections.Generic;       
-using System.Threading.Tasks;  
 
 using event_list.modules.eventlist.services;
 using event_list.modules.eventlist.storage;
@@ -10,9 +6,7 @@ using Xunit;
 using Moq;
 using FluentAssertions;
 
-namespace event_list.Tests.ModulesTests.ServicesTests;
-
-
+namespace event_list.tests.Tests.ModulesTests.ServicesTests;
 
 public class EventListFetchByIdentifierServiceTests
 {

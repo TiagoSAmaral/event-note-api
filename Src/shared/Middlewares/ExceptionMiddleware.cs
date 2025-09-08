@@ -9,6 +9,8 @@
 using System.Text.Json;
 using event_list.shared.response_default;
 using event_list.shared.exceptionsMessage;
+using Microsoft.AspNetCore.Http;
+
 namespace event_list.shared.Middlewares;
 
 public class ExceptionMiddleware
