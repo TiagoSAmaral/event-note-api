@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -16,12 +16,14 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
-
-<!--    <ItemGroup>-->
-<!--        <Compile Include="Src\**\*.cs" />-->
-<!--    </ItemGroup>-->
     
     <ItemGroup>
         <Compile Remove="Tests/**/*.cs" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Tests\Test\Test\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Tests\Test\Test\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Tests\Test\Test\obj\Test.csproj.nuget.dgspec.json" />
     </ItemGroup>
 </Project>
