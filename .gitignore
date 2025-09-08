@@ -31,7 +31,6 @@ obj/
 TestResults/
 .trx
 coverage/
-coveragereport/
 *.coverage
 *.coveragexml
 .nCrunchTemp/
