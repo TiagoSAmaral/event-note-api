@@ -2,7 +2,6 @@
 using event_list.modules.eventlist.services;
 using event_list.modules.eventlist.storage;
 using event_list.shared.exceptionsMessage;
-using event_list.Tests;
 using Xunit;
 using Moq;
 using FluentAssertions;
