@@ -47,6 +47,7 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<CustomHeaderResponse>();
 app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 app.UseHttpsRedirection();
