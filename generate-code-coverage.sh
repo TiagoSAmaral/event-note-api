@@ -5,9 +5,7 @@
 # Autor: Tiago Amaral
 # Data: 2025-09-08
 
-#rm -rf TestResults coveragereport Tests/TestResults && dotnet test ./event-list.tests.csproj --configuration Debug --collect:"XPlat Code Coverage" && reportgenerator "-reports:**/TestResults/*/coverage.cobertura.xml" -targetdir:coveragereport && open coveragereport/index.html
-
 rm -rf TestResults coveragereport Tests/TestResults && 
-dotnet test event-list.tests.csproj --configuration Debug --collect:"XPlat Code Coverage" && 
+dotnet test Tests/event-list.tests.csproj --configuration Debug --collect:"XPlat Code Coverage" && 
 reportgenerator "-reports:**/TestResults/*/coverage.cobertura.xml" -targetdir:coveragereport && 
 open coveragereport/index.html
