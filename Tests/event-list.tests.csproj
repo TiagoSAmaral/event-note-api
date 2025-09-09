@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IsPackable>false</IsPackable>
+        <RootNamespace>event_list.tests</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!-- Configurações para evitar warnings -->
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+        <NoWarn>$(NoWarn);7022;1591;0436</NoWarn>
+
+        <!-- Configurações de cobertura -->
+        <CollectCoverage>true</CollectCoverage>
+        <CoverletOutput>./TestResults/</CoverletOutput>
+        <CoverletOutputFormat>cobertura</CoverletOutputFormat>
+        <Include>[event-list]*</Include>
+        <Exclude>[*.Tests]*</Exclude>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Dependências do projeto principal -->
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.19" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.8" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+
+        <!-- Dependências de testes -->
+        <PackageReference Include="xunit" Version="2.9.3" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Moq" Version="4.20.72" />
+        <PackageReference Include="coverlet.collector" Version="6.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="FluentAssertions" Version="8.6.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Referência ao projeto principal -->
+        <ProjectReference Include="../event-list.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Excluir arquivos desnecessários -->
+        <Compile Remove="**/*.AssemblyInfo.cs" />
+    </ItemGroup>
+</Project>
+
+<!--<Project Sdk="Microsoft.NET.Sdk">-->
+<!--    <PropertyGroup>-->
+<!--        <TargetFramework>net8.0</TargetFramework>-->
+<!--        <GenerateDocumentationFile>true</GenerateDocumentationFile>-->
+<!--        <IsPackable>false</IsPackable>-->
+<!--        <RootNamespace>event_list.tests</RootNamespace>-->
+<!--        <NoWarn>$(NoWarn);CS0436</NoWarn>-->
+<!--        <NoWarn>$(NoWarn);1591</NoWarn>-->
+<!--        <Nullable>enable</Nullable>-->
+<!--        <ImplicitUsings>enable</ImplicitUsings>-->
+<!--        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>-->
+<!--        <GenerateTargetFrameworkAttribute>true</GenerateTargetFrameworkAttribute>-->
+<!--    </PropertyGroup>-->
+<!--&lt;!&ndash;  COnfiguracoa base do projeto  &ndash;&gt;-->
+<!--    <ItemGroup>-->
+<!--        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.19" />-->
+<!--        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.8" />-->
+<!--        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />-->
+<!--   -->
+<!--&lt;!&ndash;  Imports para execucao de testes &ndash;&gt;-->
+<!--        <PackageReference Include="xunit" Version="2.9.3" />-->
+<!--        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">-->
+<!--            <PrivateAssets>all</PrivateAssets>-->
+<!--            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
+<!--        </PackageReference>-->
+<!--        <PackageReference Include="Moq" Version="4.20.72" />-->
+<!--        <PackageReference Include="coverlet.collector" Version="6.0.4">-->
+<!--            <PrivateAssets>all</PrivateAssets>-->
+<!--            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
+<!--        </PackageReference>-->
+<!--        <PackageReference Include="FluentAssertions" Version="8.6.0" />-->
+<!--        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />-->
+<!--        <ProjectReference Include="./event-list.csproj" />-->
+<!--    </ItemGroup>-->
+<!--</Project>-->
