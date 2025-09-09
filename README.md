@@ -8,8 +8,69 @@
 
 # Event List API
 
-Projeto desenvolvido usando .NET 8.
-Pr
+Projeto de API desenvolvido com .Net8. 
+
+Instrucoes de execução: 
+
+- Relatório de cobertura de código: [CLICK AQUI](https://tiagosamaral.github.io/event-note-api/)
+- Acesso ao Swagger publicado: [CLICK AQUI](https://event-note-api.onrender.com/swagger/index.html)
+
+## Execução manual do projeto
+    
+Caso necessário a execução manual do projeto poderá ser feita de duas maneiras: Usando Docker ou Execução diretamente no ambiente local.
+
+### Execução com Docker 
+
+Na raiz do projeto já existe um script para auxiliar na execução do projeto locamente usando o docker. 
+Antes é necessário dar permissão de execução ao script. Abra o terminal, navegue até a pasta raiz do projeto `event-list-api`
+execute o comando: 
+
+```shell
+$ chmod +x start-app-docker.sh
+```
+E em seguinda execute o script assim: 
+
+```shell
+$ ./start-app-docker.sh
+```
+
+### Execução no Ambiente Local
+
+Abra o seu terminal, e navegue até a pasta raiz do projeto (event-list-api/) e execute os seguintes comandos: 
+
+Instalar as dependências:
+
+```shell
+$ dotnet restore
+```
+Realizar build do projeto: 
+```
+$ dotnet build
+```
+Executar projeto: 
+
+```
+$ dotnet run
+```
+
+<p>Tanto com a execução no ambiente ou local usando Docker, o Swagger do projeto poderá ser acessado na URL:</p>
+
+- Swagger: **http://localhost:5185/swagger/index.html**
+- API: **http://localhost:5185/api/eventos**
+
+## Operações da API 
+
+A API do projeto possui a seguinte rota: 
+
+- **[BASE_URL]/api/eventos** 
+
+A qual da suporte para as seguintes operações e suas ações: 
+- **GET**: Lista os eventos cadastrados
+- **POST**: Recebe uma requisição com o JSON para registrar novo evento.
+- **GET com parâmetro ID**: Recebe o ID de um evento para retornar os dados completos.
+- **DELETE com parâmetro ID**: Permite a remoção do evento.
+
+Para mais detalhes consulte o Swagger do projeto.
 
 # 🎯 Desafio Técnico – Desenvolvedor Mobile (Pleno/Sênior)
 
@@ -30,7 +91,7 @@ Este repositório contém o desafio técnico de desenvolvimento de um aplicativo
 event-list/
 ├── Src/
 |   ├── Core/
-|   ├── Mo dules/
+|   ├── Modules/
 |   |    └── Eventlist/
 |   |       ├── Infra/
 |   |       ├── Services/
