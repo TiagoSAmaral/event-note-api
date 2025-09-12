@@ -12,8 +12,10 @@ Projeto de API desenvolvido com .Net8.
 
 Instrucoes de execução: 
 
-- Relatório de cobertura de código: [CLICK AQUI](https://tiagosamaral.github.io/event-note-api/)
-- Acesso ao Swagger publicado: [CLICK AQUI](https://event-note-api.onrender.com/swagger/index.html)
+- Relatório de cobertura de código: https://tiagosamaral.github.io/event-note-api/
+- Acesso ao Swagger publicado: https://event.api.connectmidia.com/swagger/index.html
+- Download de app para teste: https://github.com/TiagoSAmaral/event-list-mobile-app/blob/main/event-list-app-debug.apk
+- Projeto app mobile: https://github.com/TiagoSAmaral/event-list-mobile-app
 
 ## Execução manual do projeto
     
