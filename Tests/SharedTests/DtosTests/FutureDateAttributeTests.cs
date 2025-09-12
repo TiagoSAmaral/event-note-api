@@ -5,13 +5,13 @@ using Xunit;
 
 namespace event_list.tests.SharedTests.DtosTests;
 
-    public class FutureDateAttributeTests
+    public class FutureDateAttributeValidatorTests
     {
-        private readonly FutureDateAttribute _attribute;
+        private readonly FutureDateAttributeValidator _attribute;
 
-        public FutureDateAttributeTests()
+        public FutureDateAttributeValidatorTests()
         {
-            _attribute = new FutureDateAttribute();
+            _attribute = new FutureDateAttributeValidator();
         }
 
         [Fact]

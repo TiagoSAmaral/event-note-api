@@ -26,6 +26,18 @@ builder.Services.AddSwaggerGen( c => {
     c.IncludeXmlComments(xmlPath);
 });
 
+// Removendo CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
+
 // Custom Module
 builder.Services.AddDbContext<EventListDbContext>(options =>
     options.UseInMemoryDatabase("EventListDb"));
@@ -44,6 +56,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
+    app.UseCors("AllowAll");
     app.UseSwagger();
     app.UseSwaggerUI();
 }

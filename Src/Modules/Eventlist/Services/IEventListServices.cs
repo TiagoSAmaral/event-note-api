@@ -15,7 +15,7 @@ namespace event_list.modules.eventlist.services;
 /// </summary>
 public interface IEventListServices 
 {
-    IEnumerable<EventFormDto> GetAll();
+    IEnumerable<EventListDto> GetAll();
     Task<EventFormDto?> GetByIdAsync(Guid id);
     Task CreateAsync(EventFormDto dto);
     Task DeleteAsync(Guid id);

@@ -35,4 +35,24 @@ public class MockManager
 
       return JsonSerializer.Deserialize<List<EventFormDto>>(arrayJson);
     }
+    
+    public List<EventListDto>? GetEventsList()
+    {
+      string arrayJson = @"
+           [{
+            ""Id"": ""df632b16-6027-4881-97ef-4584ce8167eb"",
+            ""Title"": ""Encontro Motociclistas"",
+            ""Date"": ""2025-09-17T22:22:56.254Z""
+          },{
+            ""Id"": ""649f6bed-527c-4bc9-a6a2-972a2fb0216f"",
+            ""Title"": ""Festa da Bananada"",
+            ""Date"": ""2025-09-28T22:22:56.254Z""
+          },{
+            ""id"": ""06b82193-b381-4fd1-97a3-209da96b3e57"",
+            ""Title"": ""Aniversário da Cidade"",
+            ""Date"": ""2025-09-28T22:22:56.254Z""           
+          }]";
+
+      return JsonSerializer.Deserialize<List<EventListDto>>(arrayJson);
+    }
 }

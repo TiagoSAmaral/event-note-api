@@ -26,7 +26,7 @@ public class EventListControllerTests
         public void GetAll_ShouldReturnListOfEvents()
         {
             // Arrange
-            var events = new MockManager().GetEvents()!;// new List<EventFormDto> { "event1", "event2" };
+            var events = new MockManager().GetEventsList()!;// new List<EventFormDto> { "event1", "event2" };
             _serviceMock.Setup(s => s.GetAll()).Returns(events);
 
             // Act

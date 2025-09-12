@@ -27,7 +27,7 @@ public class EventFormDto
     public string Description { get; set; } = string.Empty;
 
     [Required(ErrorMessage = ExceptionsMessages.InvalidDateMessage)]
-    [FutureDateAttribute(ErrorMessage = ExceptionsMessages.InvalidFutureDateMessage)]
+    [FutureDateAttributeValidator(ErrorMessage = ExceptionsMessages.InvalidFutureDateMessage)]
     public DateTime Date { get; set; }
 
     [Required(ErrorMessage = ExceptionsMessages.InvalidLocationMessage)]

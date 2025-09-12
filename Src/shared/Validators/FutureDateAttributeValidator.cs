@@ -1,5 +1,5 @@
 /*
-* FutureDateAttribute.cs 
+* FutureDateAttributeValidator.cs 
 * event-list 
 *
 * Created by Tiago Amaral on 06/09/2025. 
@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace event_list.shared.dtos;
 
-public class FutureDateAttribute : ValidationAttribute
+public class FutureDateAttributeValidator : ValidationAttribute
 {
     public override bool IsValid(object? value)
     {

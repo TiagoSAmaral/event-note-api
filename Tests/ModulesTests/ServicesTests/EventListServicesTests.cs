@@ -88,7 +88,7 @@ public class EventListServicesTests
     public void GetAll_ShouldCallFetchServiceFetch()
     {
         // Arrange
-        var expectedEvents = new MockManager().GetEvents()!;
+        var expectedEvents = new MockManager().GetEventsList()!;
         
         _mockFetchService.Setup(f => f.Fetch()).Returns(expectedEvents);
 
@@ -104,7 +104,7 @@ public class EventListServicesTests
     public void GetAll_WhenNoEvents_ShouldReturnEmptyCollection()
     {
         // Arrange
-        var emptyEvents = Enumerable.Empty<EventFormDto>();
+        var emptyEvents = Enumerable.Empty<EventListDto>();
         _mockFetchService.Setup(f => f.Fetch()).Returns(emptyEvents);
 
         // Act
@@ -167,7 +167,7 @@ public class EventListServicesTests
     public void GetAll_WhenFetchServiceReturnsNull_ShouldReturnEmptyCollection()
     {
         // Arrange
-        _mockFetchService.Setup(f => f.Fetch()).Returns((IEnumerable<EventFormDto>?)null);
+        _mockFetchService.Setup(f => f.Fetch()).Returns((IEnumerable<EventListDto>?)null);
 
         // Act
         var result = _services.GetAll();

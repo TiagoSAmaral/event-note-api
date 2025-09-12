@@ -24,7 +24,7 @@ public class EventListFetchServiceTests
     public void FetchEvents_WhenFounded()
     {
         // Arrange
-        var expectedEvents = new MockManager().GetEvents()!;
+        var expectedEvents = new MockManager().GetEventsList()!;
 
         _mockStorage
             .Setup(request => request.GetAllAsync())
