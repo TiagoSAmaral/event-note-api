@@ -16,6 +16,7 @@ Instrucoes de execução:
 - Acesso ao Swagger publicado: https://event.api.connectmidia.com/swagger/index.html
 - Download de app para teste: https://github.com/TiagoSAmaral/event-list-mobile-app/blob/main/event-list-app-debug.apk
 - Projeto app mobile: https://github.com/TiagoSAmaral/event-list-mobile-app
+- Uso de LetsEncript + NGINX no servidor para fornecer certificados ssl e garantir conexõees seguras com HTTPS.
 
 ## Execução manual do projeto
     
