@@ -42,7 +42,7 @@ public class EventListController : ControllerBase
     /// <param name="id"></param>
     /// <parameters>id - Identificador do evento.</parameters>
     /// <returns>Retorna um evento</returns>
-    [HttpGet("id")]
+    [HttpGet]
     public async Task<IActionResult> GetById(Guid id) => Ok(new ResponseDefault(200, string.Empty, await this._eventListServices.GetByIdAsync(id)));
 
     /// <summary>
